@@ -9,4 +9,5 @@ namespace Front_GroceryToDo.Models
         [JsonPropertyName("quantity")] public int Quantity { get; set; }
         [JsonPropertyName("weight")] public double Weight { get; set; }
     }
+    //TODO: add liters, kg etc.
 }
