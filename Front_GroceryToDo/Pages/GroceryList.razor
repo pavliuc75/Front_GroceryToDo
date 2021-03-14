@@ -1,0 +1,16 @@
+﻿@page "/GroceryList"
+@using Front_GroceryToDo.Data
+@using Front_GroceryToDo.Models
+@inject IRecordsService RecordsService
+
+<h3>GroceryList</h3>
+
+@code {
+    private Record record;
+
+    protected override async Task OnInitializedAsync()
+    {
+        record = await RecordsService.GetRecordByIdAsync(9999);
+    }
+
+}

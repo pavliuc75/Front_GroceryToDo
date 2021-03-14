@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace Front_GroceryToDo.Shared
+namespace Front_GroceryToDo.Pages
 {
     #line hidden
     using System;
@@ -82,7 +82,22 @@ using Front_GroceryToDo.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+using Front_GroceryToDo.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+using Front_GroceryToDo.Models;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/GroceryList")]
+    public partial class GroceryList : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,21 +105,20 @@ using Front_GroceryToDo.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Shared\NavMenu.razor"
+#line 8 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
        
-    private bool collapseNavMenu = true;
+    private Record record;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    protected override async Task OnInitializedAsync()
     {
-        collapseNavMenu = !collapseNavMenu;
+        record = await RecordsService.GetRecordByIdAsync(9999);
     }
 
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRecordsService RecordsService { get; set; }
     }
 }
 #pragma warning restore 1591

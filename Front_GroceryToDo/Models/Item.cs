@@ -8,6 +8,8 @@ namespace Front_GroceryToDo.Models
         [JsonPropertyName("name")] public string Name { get; set; }
         [JsonPropertyName("quantity")] public int Quantity { get; set; }
         [JsonPropertyName("weight")] public double Weight { get; set; }
+        [JsonPropertyName("unit")] public string Unit { get; set; }
     }
+
     //TODO: add liters, kg etc.
 }

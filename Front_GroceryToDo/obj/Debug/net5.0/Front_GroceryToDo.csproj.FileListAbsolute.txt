@@ -54,3 +54,5 @@ E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.
 E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Front_GroceryToDo.pdb
 E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Front_GroceryToDo.genruntimeconfig.cache
 E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Front_GroceryToDo.csproj.CopyComplete
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\RazorDeclaration\Pages\GroceryList.razor.g.cs
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Razor\Pages\GroceryList.razor.g.cs
