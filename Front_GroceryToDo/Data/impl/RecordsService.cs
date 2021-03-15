@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Security.Claims;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Front_GroceryToDo.Models;
@@ -23,17 +24,20 @@ namespace Front_GroceryToDo.Data.impl
             return result;
         }
 
-        public Task<bool> AddItemToRecordAsync(Item item)
+        public async Task<bool> AddItemToRecordAsync(Item item)
+        {
+            string itemAsJson = JsonSerializer.Serialize(item);
+            HttpContent content = new StringContent(itemAsJson, Encoding.UTF8, "application/json");
+            HttpResponseMessage message = await client.PostAsync(uri + "/Record/" + "9999", content);
+            return message.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> RemoveItemFromRecordAsync(int itemId)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<bool> RemoveItemFromRecordAsync(int itemId)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<bool> WipeRecordAsync()
+        public async Task<bool> WipeRecordAsync()
         {
             throw new System.NotImplementedException();
         }
