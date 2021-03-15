@@ -18,7 +18,7 @@ namespace Front_GroceryToDo.Data.impl
 
         public async Task<Record> GetRecordByIdAsync(int id)
         {
-            string message = await client.GetStringAsync(uri + "/Record/" + id);
+            string message = await client.GetStringAsync(uri + "/Record?id=" + id);
             Record result = JsonSerializer.Deserialize<Record>(message);
             return result;
         }
