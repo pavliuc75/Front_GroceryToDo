@@ -2,6 +2,7 @@
 @using Front_GroceryToDo.Data
 @using Front_GroceryToDo.Models
 @inject IRecordsService RecordsService
+@inject NavigationManager NavManager
 
 <h3>GroceryList</h3>
 <hr/>
@@ -11,15 +12,12 @@
         <em>Loading...</em>
     </p>
 }
-else if (!record.Items.Any())
-{
-    <p>
-        <em>The list is empty.</em>
-    </p>
-}
 else
 {
     <ListRendering Items="@record.Items"></ListRendering>
+    <button class="btn btn-primary" @onclick="Add">
+        Add
+    </button>
 }
 
 @code {
@@ -28,6 +26,11 @@ else
     protected override async Task OnInitializedAsync()
     {
         record = await RecordsService.GetRecordByIdAsync(9999);
+    }
+
+    private void Add()
+    {
+        NavManager.NavigateTo("AddItem");
     }
 
 }
