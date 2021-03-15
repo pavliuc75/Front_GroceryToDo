@@ -83,21 +83,13 @@ using Front_GroceryToDo.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
-using Front_GroceryToDo.Data;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+#line 1 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
 using Front_GroceryToDo.Models;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/GroceryList")]
-    public partial class GroceryList : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class ListRendering : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,20 +97,16 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 25 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+#line 25 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
        
-    private Record record;
 
-    protected override async Task OnInitializedAsync()
-    {
-        record = await RecordsService.GetRecordByIdAsync(9999);
-    }
+    [Parameter]
+    public List<Item> Items { get; set; }
 
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRecordsService RecordsService { get; set; }
     }
 }
 #pragma warning restore 1591

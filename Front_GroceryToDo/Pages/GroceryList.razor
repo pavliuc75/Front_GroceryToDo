@@ -19,27 +19,7 @@ else if (!record.Items.Any())
 }
 else
 {
-    <table class="table">
-        <thead>
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>quantity</th>
-            <th>completed</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in record.Items)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.Quantity</td>
-                <td>@item.Completed.ToString()</td>
-            </tr>
-        }
-        </tbody>
-    </table>
+    <ListRendering Items="@record.Items"></ListRendering>
 }
 
 @code {
