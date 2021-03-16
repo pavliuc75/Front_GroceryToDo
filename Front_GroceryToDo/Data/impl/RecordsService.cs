@@ -32,6 +32,14 @@ namespace Front_GroceryToDo.Data.impl
             return message.IsSuccessStatusCode;
         }
 
+        public async Task<bool> UpdateItemInRecordAsync(Item item)
+        {
+            string itemAsJson = JsonSerializer.Serialize(item);
+            HttpContent content = new StringContent(itemAsJson, Encoding.UTF8, "application/json");
+            HttpResponseMessage message = await client.PostAsync(uri + "/Record/" + "9999", content);
+            return message.IsSuccessStatusCode;
+        }
+
         public async Task<bool> RemoveItemFromRecordAsync(int itemId)
         {
             throw new System.NotImplementedException();

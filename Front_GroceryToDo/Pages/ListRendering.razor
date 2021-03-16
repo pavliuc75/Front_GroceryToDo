@@ -1,5 +1,7 @@
 ﻿@using Front_GroceryToDo.Models
-
+@using Front_GroceryToDo.Data.impl
+@using Front_GroceryToDo.Data
+@inject IRecordsService RecordsService
 
 @if (!Items.Any())
 {
@@ -15,7 +17,7 @@ else
             <th>id</th>
             <th>name</th>
             <th>quantity</th>
-            <th>completed</th>
+            <th>isCompleted</th>
         </tr>
         </thead>
         <tbody>
@@ -25,7 +27,9 @@ else
                 <td>@item.Id</td>
                 <td>@item.Name</td>
                 <td>@item.Quantity</td>
-                <td>@item.Completed.ToString()</td>
+                <td>
+                    <input type="checkbox" checked=@item.IsCompleted @onChange="@((arg) => CompleteChange(arg, item))"/>
+                </td>
             </tr>
         }
         </tbody>
@@ -36,5 +40,12 @@ else
 
     [Parameter]
     public List<Item> Items { get; set; }
+
+    private async Task CompleteChange(ChangeEventArgs evt, Item item)
+    {
+        item.IsCompleted = (bool) evt.Value;
+        bool isUpdateSuccessful = await RecordsService.UpdateItemInRecordAsync(item);
+        Console.WriteLine(isUpdateSuccessful);
+    }
 
 }

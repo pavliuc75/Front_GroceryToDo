@@ -7,6 +7,7 @@ namespace Front_GroceryToDo.Data
     {
         Task<Record> GetRecordByIdAsync(int id);
         Task<bool> AddItemToRecordAsync(Item item);
+        Task<bool> UpdateItemInRecordAsync(Item item);
         Task<bool> RemoveItemFromRecordAsync(int itemId);
         Task<bool> WipeRecordAsync();
     }

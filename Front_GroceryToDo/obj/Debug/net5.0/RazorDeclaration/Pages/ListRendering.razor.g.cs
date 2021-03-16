@@ -89,6 +89,20 @@ using Front_GroceryToDo.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+using Front_GroceryToDo.Data.impl;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+using Front_GroceryToDo.Data;
+
+#line default
+#line hidden
+#nullable disable
     public partial class ListRendering : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -97,16 +111,24 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+#line 39 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
        
 
     [Parameter]
     public List<Item> Items { get; set; }
 
+    private async Task CompleteChange(ChangeEventArgs evt, Item item)
+    {
+        item.IsCompleted = (bool) evt.Value;
+        bool isUpdateSuccessful = await RecordsService.UpdateItemInRecordAsync(item);
+        Console.WriteLine(isUpdateSuccessful);
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRecordsService RecordsService { get; set; }
     }
 }
 #pragma warning restore 1591
