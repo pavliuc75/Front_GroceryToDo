@@ -89,6 +89,13 @@ using Front_GroceryToDo.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\AddItem.razor"
+using Front_GroceryToDo.Models;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/AddItem")]
     public partial class AddItem : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,14 +105,33 @@ using Front_GroceryToDo.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 16 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\AddItem.razor"
+#line 20 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\AddItem.razor"
        
 
     private string name;
+    private string errorMessage;
 
-    private void Add()
+    private async Task Add()
     {
-        NavManager.NavigateTo("GroceryList");
+        if (!String.IsNullOrEmpty(name))
+        {
+            Item item = new Item();
+            item.Name = name;
+            bool isAddSuccess = await RecordsService.AddItemToRecordAsync(item);
+            if (isAddSuccess)
+            {
+                errorMessage = "";
+                NavManager.NavigateTo("GroceryList");
+            }
+            else
+            {
+                errorMessage = "An error occured.";
+            }
+        }
+        else
+        {
+            errorMessage = "The task should have a name!";
+        }
     }
 
 
