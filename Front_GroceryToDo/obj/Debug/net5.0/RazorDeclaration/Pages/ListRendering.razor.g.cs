@@ -117,11 +117,12 @@ using Front_GroceryToDo.Data;
     [Parameter]
     public List<Item> Items { get; set; }
 
-    private async Task CompleteChange(ChangeEventArgs evt, Item item)
+    private async Task CompleteChange(Item item)
     {
-        item.IsCompleted = (bool) evt.Value;
-        bool isUpdateSuccessful = await RecordsService.UpdateItemInRecordAsync(item);
-        Console.WriteLine(isUpdateSuccessful);
+    //item.IsCompleted = (bool) checkedValue;
+        Console.WriteLine("clicked");
+    //bool isUpdateSuccessful = await RecordsService.UpdateItemInRecordAsync(item);
+    //Console.WriteLine(isUpdateSuccessful);
     }
 
 

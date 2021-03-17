@@ -14,22 +14,22 @@ else
     <table class="table">
         <thead>
         <tr>
+            <th></th>
             <th>id</th>
             <th>name</th>
             <th>quantity</th>
-            <th>isCompleted</th>
         </tr>
         </thead>
         <tbody>
         @foreach (var item in Items)
         {
             <tr>
+                <td>
+                    <button @onclick="() => CompleteChange(item)">Complete</button>
+                </td>
                 <td>@item.Id</td>
                 <td>@item.Name</td>
                 <td>@item.Quantity</td>
-                <td>
-                    <input type="checkbox" checked=@item.IsCompleted @onChange="@((arg) => CompleteChange(arg, item))"/>
-                </td>
             </tr>
         }
         </tbody>
@@ -41,11 +41,12 @@ else
     [Parameter]
     public List<Item> Items { get; set; }
 
-    private async Task CompleteChange(ChangeEventArgs evt, Item item)
+    private async Task CompleteChange(Item item)
     {
-        item.IsCompleted = (bool) evt.Value;
-        bool isUpdateSuccessful = await RecordsService.UpdateItemInRecordAsync(item);
-        Console.WriteLine(isUpdateSuccessful);
+    //item.IsCompleted = (bool) checkedValue;
+        Console.WriteLine("clicked");
+    //bool isUpdateSuccessful = await RecordsService.UpdateItemInRecordAsync(item);
+    //Console.WriteLine(isUpdateSuccessful);
     }
 
 }
