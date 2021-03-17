@@ -134,6 +134,11 @@ using Front_GroceryToDo.Models;
         NavManager.NavigateTo("AddItem");
     }
 
+    public void test()
+    {
+        Console.WriteLine("test");
+    }
+
 
 #line default
 #line hidden

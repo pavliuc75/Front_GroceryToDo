@@ -1,6 +1,7 @@
 ﻿@using Front_GroceryToDo.Models
 @using Front_GroceryToDo.Data.impl
 @using Front_GroceryToDo.Data
+@using System.ComponentModel
 @inject IRecordsService RecordsService
 
 @if (!Items.Any())
@@ -43,6 +44,9 @@ else
     [Parameter]
     public List<Item> Items { get; set; }
 
+    [Parameter]
+    public GroceryList GroceryListInstance { get; set; }
+
 
     protected override void OnInitialized()
     {
@@ -51,7 +55,7 @@ else
 
     private async Task CompleteChange(Item item)
     {
-        //
+        GroceryListInstance.test();
     }
 
 }

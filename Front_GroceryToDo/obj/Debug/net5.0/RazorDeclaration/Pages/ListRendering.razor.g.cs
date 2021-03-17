@@ -103,6 +103,13 @@ using Front_GroceryToDo.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+using System.ComponentModel;
+
+#line default
+#line hidden
+#nullable disable
     public partial class ListRendering : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -111,13 +118,16 @@ using Front_GroceryToDo.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+#line 40 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
        
 
     private string buttonName { get; set; }
 
     [Parameter]
     public List<Item> Items { get; set; }
+
+    [Parameter]
+    public GroceryList GroceryListInstance { get; set; }
 
 
     protected override void OnInitialized()
@@ -127,10 +137,7 @@ using Front_GroceryToDo.Data;
 
     private async Task CompleteChange(Item item)
     {
-    //item.IsCompleted = (bool) checkedValue;
-        Console.WriteLine("clicked");
-    //bool isUpdateSuccessful = await RecordsService.UpdateItemInRecordAsync(item);
-    //Console.WriteLine(isUpdateSuccessful);
+        GroceryListInstance.test();
     }
 
 
