@@ -105,13 +105,28 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 23 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+#line 27 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
        
     private Record record;
+    private List<Item> completedItems;
+    private List<Item> uncompletedItems;
 
     protected override async Task OnInitializedAsync()
     {
         record = await RecordsService.GetRecordByIdAsync(9999);
+        completedItems = new List<Item>();
+        uncompletedItems = new List<Item>();
+        foreach (var item in record.Items)
+        {
+            if (item.IsCompleted)
+            {
+                completedItems.Add(item);
+            }
+            else
+            {
+                uncompletedItems.Add(item);
+            }
+        }
     }
 
     private void Add()

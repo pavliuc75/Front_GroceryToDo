@@ -114,8 +114,16 @@ using Front_GroceryToDo.Data;
 #line 39 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
        
 
+    private string buttonName { get; set; }
+
     [Parameter]
     public List<Item> Items { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        buttonName = Items[0].IsCompleted ? "Incomplete" : "Complete";
+    }
 
     private async Task CompleteChange(Item item)
     {

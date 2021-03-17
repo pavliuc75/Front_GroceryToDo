@@ -14,7 +14,11 @@
 }
 else
 {
-    <ListRendering Items="@record.Items"></ListRendering>
+    <em>@record.Description</em>
+    <em>Uncompleted</em>
+    <ListRendering Items="@uncompletedItems"></ListRendering>
+    <em>Completed</em>
+    <ListRendering Items="@completedItems"></ListRendering>
     <button class="btn btn-primary" @onclick="Add">
         Add
     </button>
@@ -22,10 +26,25 @@ else
 
 @code {
     private Record record;
+    private List<Item> completedItems;
+    private List<Item> uncompletedItems;
 
     protected override async Task OnInitializedAsync()
     {
         record = await RecordsService.GetRecordByIdAsync(9999);
+        completedItems = new List<Item>();
+        uncompletedItems = new List<Item>();
+        foreach (var item in record.Items)
+        {
+            if (item.IsCompleted)
+            {
+                completedItems.Add(item);
+            }
+            else
+            {
+                uncompletedItems.Add(item);
+            }
+        }
     }
 
     private void Add()
