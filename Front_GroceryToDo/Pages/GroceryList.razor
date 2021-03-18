@@ -52,9 +52,9 @@ else
         NavManager.NavigateTo("AddItem");
     }
 
-    public void test()
+    public void Reload()
     {
-        Console.WriteLine("test");
+        InvokeAsync(StateHasChanged);
     }
 
 }

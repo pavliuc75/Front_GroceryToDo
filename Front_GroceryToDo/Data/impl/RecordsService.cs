@@ -36,7 +36,7 @@ namespace Front_GroceryToDo.Data.impl
         {
             string itemAsJson = JsonSerializer.Serialize(item);
             HttpContent content = new StringContent(itemAsJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync(uri + "/Record/" + "9999", content);
+            HttpResponseMessage message = await client.PatchAsync(uri + "/Record/" + "9999", content);
             return message.IsSuccessStatusCode;
         }
 

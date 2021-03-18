@@ -134,9 +134,9 @@ using Front_GroceryToDo.Models;
         NavManager.NavigateTo("AddItem");
     }
 
-    public void test()
+    public void Reload()
     {
-        Console.WriteLine("test");
+        InvokeAsync(StateHasChanged);
     }
 
 

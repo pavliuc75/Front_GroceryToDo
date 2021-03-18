@@ -110,6 +110,13 @@ using System.ComponentModel;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+using System.Text.Json;
+
+#line default
+#line hidden
+#nullable disable
     public partial class ListRendering : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -118,7 +125,7 @@ using System.ComponentModel;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 40 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+#line 41 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
        
 
     private string buttonName { get; set; }
@@ -135,9 +142,11 @@ using System.ComponentModel;
         buttonName = Items[0].IsCompleted ? "Incomplete" : "Complete";
     }
 
-    private async Task CompleteChange(Item item)
+    private void CompleteChange(Item item)
     {
-        GroceryListInstance.test();
+        item.IsCompleted = !item.IsCompleted;
+        RecordsService.UpdateItemInRecordAsync(item);
+        GroceryListInstance.Reload();
     }
 
 
