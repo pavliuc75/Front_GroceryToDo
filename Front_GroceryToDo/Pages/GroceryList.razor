@@ -15,6 +15,7 @@
 else
 {
     <em>@record.Description</em>
+    <hr/>
     <em>Uncompleted</em>
     <ListRendering Items="@uncompletedItems" GroceryListInstance="@this"></ListRendering>
     <em>Completed</em>
@@ -25,7 +26,7 @@ else
 }
 
 @code {
-    private Record record;
+    public Record record;
     private List<Item> completedItems;
     private List<Item> uncompletedItems;
 
@@ -54,7 +55,8 @@ else
 
     public void Reload()
     {
-        InvokeAsync(StateHasChanged);
+    //record = await RecordsService.GetRecordByIdAsync(9999);
+        StateHasChanged();
     }
 
 }

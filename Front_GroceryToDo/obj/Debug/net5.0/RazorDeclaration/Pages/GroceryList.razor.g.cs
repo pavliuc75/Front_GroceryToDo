@@ -105,9 +105,9 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 27 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+#line 28 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
        
-    private Record record;
+    public Record record;
     private List<Item> completedItems;
     private List<Item> uncompletedItems;
 
@@ -136,7 +136,8 @@ using Front_GroceryToDo.Models;
 
     public void Reload()
     {
-        InvokeAsync(StateHasChanged);
+    //record = await RecordsService.GetRecordByIdAsync(9999);
+        StateHasChanged();
     }
 
 

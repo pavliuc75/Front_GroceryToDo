@@ -142,10 +142,11 @@ using System.Text.Json;
         buttonName = Items[0].IsCompleted ? "Incomplete" : "Complete";
     }
 
-    private void CompleteChange(Item item)
+    private async Task CompleteChange(Item item)
     {
         item.IsCompleted = !item.IsCompleted;
-        RecordsService.UpdateItemInRecordAsync(item);
+        await RecordsService.UpdateItemInRecordAsync(item);
+        GroceryListInstance.record = await RecordsService.GetRecordByIdAsync(9999);
         GroceryListInstance.Reload();
     }
 
