@@ -146,8 +146,7 @@ using System.Text.Json;
     {
         item.IsCompleted = !item.IsCompleted;
         await RecordsService.UpdateItemInRecordAsync(item);
-        GroceryListInstance.record = await RecordsService.GetRecordByIdAsync(9999);
-        GroceryListInstance.Reload();
+        await GroceryListInstance.Reload();
     }
 
 

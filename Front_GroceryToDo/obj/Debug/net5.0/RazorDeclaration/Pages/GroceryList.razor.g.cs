@@ -134,9 +134,10 @@ using Front_GroceryToDo.Models;
         NavManager.NavigateTo("AddItem");
     }
 
-    public void Reload()
+    public async Task Reload()
     {
     //record = await RecordsService.GetRecordByIdAsync(9999);
+        await OnInitializedAsync();
         StateHasChanged();
     }
 
