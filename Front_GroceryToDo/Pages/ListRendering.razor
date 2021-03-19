@@ -27,7 +27,7 @@ else
         {
             <tr>
                 <td>
-                    <button @onclick="() => CompleteChange(item)">@buttonName</button>
+                    <button @onclick="() => CompleteChange(item)">@ButtonName</button>
                 </td>
                 <td>@item.Id</td>
                 <td>@item.Name</td>
@@ -40,19 +40,14 @@ else
 
 @code {
 
-    private string buttonName { get; set; }
+    [Parameter]
+    public string ButtonName { get; set; }
 
     [Parameter]
     public List<Item> Items { get; set; }
 
     [Parameter]
     public GroceryList GroceryListInstance { get; set; }
-
-
-    protected override void OnInitialized()
-    {
-        buttonName = Items[0].IsCompleted ? "Incomplete" : "Complete";
-    }
 
     private async Task CompleteChange(Item item)
     {
