@@ -105,7 +105,7 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 48 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+#line 50 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
        
     public Record record;
     private List<Item> completedItems;
@@ -124,7 +124,7 @@ using Front_GroceryToDo.Models;
     {
         try
         {
-            record = await RecordsService.GetRecordByIdAsync(1002);
+            record = await RecordsService.GetRecordByIdAsync(UserService.GetCachedId());
             completedItems = new List<Item>();
             uncompletedItems = new List<Item>();
             collapseMenu = true;
@@ -185,10 +185,24 @@ using Front_GroceryToDo.Models;
         NavManager.NavigateTo("/ChangeRecordDescription");
     }
 
+    private async Task CopyToClipboard()
+    {
+        try
+        {
+            await ClipboardService.WriteTextAsync(record.Id.ToString());
+        }
+        catch
+        {
+            Console.WriteLine("Cannot write text to clipboard");
+        }
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserService UserService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ClipboardService ClipboardService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRecordsService RecordsService { get; set; }
     }

@@ -11,9 +11,11 @@ namespace Front_GroceryToDo.Data.impl
     {
         private string uri = "https://localhost:5003";
         private readonly HttpClient client;
+        private IUserService userService;
 
-        public RecordsService()
+        public RecordsService(IUserService userService)
         {
+            this.userService = userService;
             client = new HttpClient();
         }
 
@@ -21,14 +23,22 @@ namespace Front_GroceryToDo.Data.impl
         {
             string message = await client.GetStringAsync(uri + "/Record/" + id);
             Record result = JsonSerializer.Deserialize<Record>(message);
+            userService.SetCachedId(result.Id);
             return result;
+        }
+
+        public async Task CreateRecordAsync()
+        {
+            string message = await client.GetStringAsync($"{uri}/Record");
+            int generatedId = JsonSerializer.Deserialize<int>(message);
+            userService.SetCachedId(generatedId);
         }
 
         public async Task<bool> AddItemToRecordAsync(Item item)
         {
             string itemAsJson = JsonSerializer.Serialize(item);
             HttpContent content = new StringContent(itemAsJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync(uri + "/Record/" + "1002", content);
+            HttpResponseMessage message = await client.PostAsync(uri + "/Record/" + userService.GetCachedId(), content);
             return message.IsSuccessStatusCode;
         }
 
@@ -36,30 +46,29 @@ namespace Front_GroceryToDo.Data.impl
         {
             string itemAsJson = JsonSerializer.Serialize(item);
             HttpContent content = new StringContent(itemAsJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PatchAsync(uri + "/Record/" + "1002", content);
+            HttpResponseMessage message = await client.PatchAsync(uri + "/Record/" + userService.GetCachedId(), content);
             return message.IsSuccessStatusCode;
         }
 
         public async Task<bool> UpdateRecordDescriptionAsync(string description)
         {
-            int recordId = 1002;
             HttpContent content = new StringContent("", Encoding.UTF8, "application/json");
             HttpResponseMessage message =
-                await client.PatchAsync($"{uri}/Record?recordId={recordId}&description={description}", content);
+                await client.PatchAsync($"{uri}/Record?recordId={userService.GetCachedId()}&description={description}", content);
             return message.IsSuccessStatusCode;
         }
 
         public async Task<bool> RemoveItemFromRecordAsync(int itemId)
         {
             int recordId = 1002;
-            HttpResponseMessage message = await client.DeleteAsync($"{uri}/Record?itemId={itemId}&recordId={recordId}");
+            HttpResponseMessage message = await client.DeleteAsync($"{uri}/Record?itemId={itemId}&recordId={userService.GetCachedId()}");
             return message.IsSuccessStatusCode;
         }
 
         public async Task<bool> WipeRecordAsync()
         {
             int recordId = 1002;
-            HttpResponseMessage message = await client.DeleteAsync($"{uri}/Record/{recordId}");
+            HttpResponseMessage message = await client.DeleteAsync($"{uri}/Record/{userService.GetCachedId()}");
             return message.IsSuccessStatusCode;
         }
     }

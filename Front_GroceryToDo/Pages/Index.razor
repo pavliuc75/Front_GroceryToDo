@@ -1,7 +1,67 @@
 ﻿@page "/"
+@using Front_GroceryToDo.Data
+@inject IRecordsService RecordsService
+@inject NavigationManager NavManager
+@inject IUserService UserService
 
-<h1>Hello, world!</h1>
+<h1>Input list ID:</h1>
+<input type="number" @bind="id">
+<button @onclick="EnteredIdButtonClicked">Go to list</button>
+<em style="color: red">@errorMessage</em>
+<br>
+<br>
+Or, generate a new list:
+<button @onclick="GenerateButtonPressed">Generate a new list</button>
 
-Welcome to your new app.
+@code{
 
-<SurveyPrompt Title="How is Blazor working for you?"/>
+    private int? id;
+    private string errorMessage;
+
+    protected override void OnInitialized()
+    {
+        int cachedId = UserService.GetCachedId();
+        if (cachedId != 0)
+        {
+            id = cachedId;
+        }
+    }
+
+    private async Task EnteredIdButtonClicked()
+    {
+        try
+        {
+            if (id >= 1000 && id <= 9999)
+            {
+                await RecordsService.GetRecordByIdAsync((int) id);
+                errorMessage = "";
+                NavManager.NavigateTo("/GroceryList");
+            }
+            else
+            {
+                errorMessage = "Value should be between 1000 and 9999";
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            errorMessage = "The list with the entered ID does not exist, please enter another ID or generate a new list.";
+        }
+    }
+
+    private async Task GenerateButtonPressed()
+    {
+        try
+        {
+            await RecordsService.CreateRecordAsync();
+            errorMessage = "";
+            NavManager.NavigateTo("/GroceryList");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            NavManager.NavigateTo("/Error");
+        }
+    }
+
+}

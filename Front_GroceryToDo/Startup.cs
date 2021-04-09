@@ -31,6 +31,8 @@ namespace Front_GroceryToDo
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<IRecordsService, RecordsService>();
+            services.AddScoped<ClipboardService>();
+            services.AddSingleton<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
