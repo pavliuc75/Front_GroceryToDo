@@ -83,41 +83,21 @@ using Front_GroceryToDo.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+#line 2 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ItemDetails.razor"
 using Front_GroceryToDo.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
-using Front_GroceryToDo.Data.impl;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+#line 3 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ItemDetails.razor"
 using Front_GroceryToDo.Data;
 
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 4 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
-using System.ComponentModel;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
-using System.Text.Json;
-
-#line default
-#line hidden
-#nullable disable
-    public partial class ListRendering : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/ItemDetails/{Id:int}")]
+    public partial class ItemDetails : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -125,36 +105,57 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 46 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+#line 21 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ItemDetails.razor"
        
 
     [Parameter]
-    public string ButtonName { get; set; }
+    public int Id { get; set; }
 
-    [Parameter]
-    public List<Item> Items { get; set; }
+    private Item item;
+    private Record record;
 
-    [Parameter]
-    public GroceryList GroceryListInstance { get; set; }
-
-    private async Task CompleteChange(Item item)
+    protected override async Task OnInitializedAsync()
     {
-        item.IsCompleted = !item.IsCompleted;
-        await RecordsService.UpdateItemInRecordAsync(item);
-        await GroceryListInstance.Reload();
+        try
+        {
+            record = await RecordsService.GetRecordByIdAsync(1002);
+            item = record.Items.FirstOrDefault(i => i.Id == this.Id);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            NavManager.NavigateTo("/Error");
+        }
     }
 
-    private void MoreButtonClicked(int id)
+
+    private async Task DeleteButtonPressed()
     {
-        NavManager.NavigateTo($"/ItemDetails/{id}");
+        try
+        {
+            bool result = await RecordsService.RemoveItemFromRecordAsync(item.Id);
+            if (result)
+            {
+                NavManager.NavigateTo("/GroceryList");
+            }
+            else
+            {
+                NavManager.NavigateTo("/Error");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            NavManager.NavigateTo("/Error");
+        }
     }
 
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRecordsService RecordsService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
     }
 }
 #pragma warning restore 1591

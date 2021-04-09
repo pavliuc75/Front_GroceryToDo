@@ -1,6 +1,65 @@
-﻿@page "/ItemDetails"
-<h3>ItemDetails</h3>
+﻿@page "/ItemDetails/{Id:int}"
+@using Front_GroceryToDo.Models
+@using Front_GroceryToDo.Data
+@inject NavigationManager NavManager
+@inject IRecordsService RecordsService
+
+@if (item == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <h3>@item.Name</h3>
+    <hr>
+    <button @onclick="DeleteButtonPressed">Delete</button>
+}
+
 
 @code {
-    
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private Item item;
+    private Record record;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            record = await RecordsService.GetRecordByIdAsync(1002);
+            item = record.Items.FirstOrDefault(i => i.Id == this.Id);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            NavManager.NavigateTo("/Error");
+        }
+    }
+
+
+    private async Task DeleteButtonPressed()
+    {
+        try
+        {
+            bool result = await RecordsService.RemoveItemFromRecordAsync(item.Id);
+            if (result)
+            {
+                NavManager.NavigateTo("/GroceryList");
+            }
+            else
+            {
+                NavManager.NavigateTo("/Error");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            NavManager.NavigateTo("/Error");
+        }
+    }
+
 }

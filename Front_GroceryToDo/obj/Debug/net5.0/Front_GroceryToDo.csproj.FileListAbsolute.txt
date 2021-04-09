@@ -62,3 +62,5 @@ E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.
 E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Razor\Pages\AddItem.razor.g.cs
 E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\RazorDeclaration\Pages\Error.razor.g.cs
 E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Razor\Pages\Error.razor.g.cs
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\RazorDeclaration\Pages\ItemDetails.razor.g.cs
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Razor\Pages\ItemDetails.razor.g.cs

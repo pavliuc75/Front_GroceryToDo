@@ -4,6 +4,7 @@
 @using System.ComponentModel
 @using System.Text.Json
 @inject IRecordsService RecordsService
+@inject NavigationManager NavManager
 
 @if (!Items.Any())
 {
@@ -34,7 +35,7 @@ else
                 <td>@item.Name</td>
                 <td>@item.Quantity</td>
                 <td>
-                    <button @onclick="() => MoreButtonClicked(item)">More</button>
+                    <button @onclick="() => MoreButtonClicked(item.Id)">More</button>
                 </td>
             </tr>
         }
@@ -60,9 +61,9 @@ else
         await GroceryListInstance.Reload();
     }
 
-    private void MoreButtonClicked(Item item)
+    private void MoreButtonClicked(int id)
     {
-        throw new NotImplementedException();
+        NavManager.NavigateTo($"/ItemDetails/{id}");
     }
 
 }
