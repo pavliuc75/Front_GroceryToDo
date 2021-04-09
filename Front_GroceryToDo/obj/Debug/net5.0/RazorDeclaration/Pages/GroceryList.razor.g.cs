@@ -105,7 +105,7 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+#line 32 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
        
     public Record record;
     private List<Item> completedItems;
@@ -140,6 +140,27 @@ using Front_GroceryToDo.Models;
     private void Add()
     {
         NavManager.NavigateTo("AddItem");
+    }
+
+    private async Task WipeButtonPressed()
+    {
+        try
+        {
+            bool result = await RecordsService.WipeRecordAsync();
+            if (result)
+            {
+                await Reload();
+            }
+            else
+            {
+                NavManager.NavigateTo("/Error");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            NavManager.NavigateTo("/Error");
+        }
     }
 
     public async Task Reload()

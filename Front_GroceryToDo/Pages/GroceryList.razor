@@ -18,10 +18,14 @@ else
     <hr/>
     <em>Uncompleted</em>
     <ListRendering Items="@uncompletedItems" ButtonName="Complete" GroceryListInstance="@this"></ListRendering>
+    <br>
     <em>Completed</em>
     <ListRendering Items="@completedItems" ButtonName="Incomplete" GroceryListInstance="@this"></ListRendering>
     <button class="btn btn-primary" @onclick="Add">
         Add
+    </button>
+    <button class="btn btn-warning" @onclick="WipeButtonPressed">
+        Wipe all data
     </button>
 }
 
@@ -59,6 +63,27 @@ else
     private void Add()
     {
         NavManager.NavigateTo("AddItem");
+    }
+
+    private async Task WipeButtonPressed()
+    {
+        try
+        {
+            bool result = await RecordsService.WipeRecordAsync();
+            if (result)
+            {
+                await Reload();
+            }
+            else
+            {
+                NavManager.NavigateTo("/Error");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            NavManager.NavigateTo("/Error");
+        }
     }
 
     public async Task Reload()
