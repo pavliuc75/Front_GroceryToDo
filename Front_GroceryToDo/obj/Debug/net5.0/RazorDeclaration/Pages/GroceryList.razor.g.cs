@@ -113,19 +113,27 @@ using Front_GroceryToDo.Models;
 
     protected override async Task OnInitializedAsync()
     {
-        record = await RecordsService.GetRecordByIdAsync(9999);
-        completedItems = new List<Item>();
-        uncompletedItems = new List<Item>();
-        foreach (var item in record.Items)
+        try
         {
-            if (item.IsCompleted)
+            record = await RecordsService.GetRecordByIdAsync(1002);
+            completedItems = new List<Item>();
+            uncompletedItems = new List<Item>();
+            foreach (var item in record.Items)
             {
-                completedItems.Add(item);
+                if (item.IsCompleted)
+                {
+                    completedItems.Add(item);
+                }
+                else
+                {
+                    uncompletedItems.Add(item);
+                }
             }
-            else
-            {
-                uncompletedItems.Add(item);
-            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            NavManager.NavigateTo("/Error");
         }
     }
 
