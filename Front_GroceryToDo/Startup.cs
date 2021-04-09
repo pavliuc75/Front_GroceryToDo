@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Front_GroceryToDo.Data;
 using Front_GroceryToDo.Data.impl;
+using Syncfusion.Blazor;
 
 namespace Front_GroceryToDo
 {

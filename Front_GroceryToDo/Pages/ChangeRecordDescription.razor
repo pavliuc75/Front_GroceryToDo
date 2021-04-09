@@ -1,0 +1,37 @@
+﻿@page "/ChangeRecordDescription"
+@using Front_GroceryToDo.Data
+@inject NavigationManager NavManager
+@inject IRecordsService RecordsService
+
+<h3>Enter the new description for the record:</h3>
+<input @bind="newDescription">
+<button @onclick="ApplyButtonPressed">Apply changes</button>
+
+@code {
+    private string newDescription;
+
+    private async Task ApplyButtonPressed()
+    {
+        try
+        {
+            if (!String.IsNullOrEmpty(newDescription))
+            {
+                bool result = await RecordsService.UpdateRecordDescriptionAsync(newDescription);
+                if (result)
+                {
+                    NavManager.NavigateTo("/GroceryList");
+                }
+                else
+                {
+                    NavManager.NavigateTo("/Error");
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            NavManager.NavigateTo("/Error");
+        }
+    }
+
+}

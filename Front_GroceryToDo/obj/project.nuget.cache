@@ -1,8 +1,30 @@
 {
   "version": 2,
-  "dgSpecHash": "S4QRzvwj0NrfPUXJV61R/5SJUxDtWWHObr2LUvjNwRp+Z+1u8ZgV52kKp5V08Dy5XAxDb8qYNSxxiOOMMGPoAQ==",
+  "dgSpecHash": "BqnbYwX0zouFj+8zC8qaazYKBRXpETG8cBJoAqM+IAJgWcAY28yf9+mVKWNNrOYm/XCeVijFVqAN+kdRgeZhDg==",
   "success": true,
   "projectFilePath": "E:\\Projects\\GroceryAppBlazor\\Front_GroceryToDo\\Front_GroceryToDo\\Front_GroceryToDo.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.0\\microsoft.aspnetcore.authorization.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.aspnetcore.components\\5.0.0\\microsoft.aspnetcore.components.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\5.0.0\\microsoft.aspnetcore.components.analyzers.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\5.0.0\\microsoft.aspnetcore.components.forms.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.aspnetcore.components.web\\5.0.0\\microsoft.aspnetcore.components.web.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.aspnetcore.metadata\\5.0.0\\microsoft.aspnetcore.metadata.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.jsinterop\\5.0.0\\microsoft.jsinterop.5.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\syncfusion.blazor\\19.1.0.55\\syncfusion.blazor.19.1.0.55.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\syncfusion.excelexport.net.core\\19.1.0.55\\syncfusion.excelexport.net.core.19.1.0.55.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\syncfusion.licensing\\19.1.0.55\\syncfusion.licensing.19.1.0.55.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\syncfusion.pdfexport.net.core\\19.1.0.55\\syncfusion.pdfexport.net.core.19.1.0.55.nupkg.sha512",
+    "C:\\Users\\pavli\\.nuget\\packages\\system.io.pipelines\\5.0.0\\system.io.pipelines.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

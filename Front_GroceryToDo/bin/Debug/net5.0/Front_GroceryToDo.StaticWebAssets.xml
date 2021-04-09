@@ -1,3 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\pavli\.nuget\packages\syncfusion.blazor\19.1.0.55\build\..\staticwebassets\" />
   <ContentRoot BasePath="/" Path="E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\scopedcss\bundle\" />
 </StaticWebAssets>

@@ -64,3 +64,16 @@ E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.
 E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Razor\Pages\Error.razor.g.cs
 E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\RazorDeclaration\Pages\ItemDetails.razor.g.cs
 E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Razor\Pages\ItemDetails.razor.g.cs
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Newtonsoft.Json.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Syncfusion.Blazor.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Syncfusion.ExcelExport.Net.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Syncfusion.Licensing.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\Syncfusion.PdfExport.Net.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\bin\Debug\net5.0\System.IO.Pipelines.dll
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\RazorDeclaration\Pages\ChangeRecordDescription.razor.g.cs
+E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\obj\Debug\net5.0\Razor\Pages\ChangeRecordDescription.razor.g.cs

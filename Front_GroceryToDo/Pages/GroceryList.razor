@@ -24,15 +24,40 @@ else
     <button class="btn btn-primary" @onclick="Add">
         Add
     </button>
-    <button class="btn btn-warning" @onclick="WipeButtonPressed">
-        Wipe all data
-    </button>
+    <br>
+    <br>
+    <div>
+        <button class="btn btn-outline-secondary" @onclick="ToggleMenu">
+            Settings
+        </button>
+        <div class="@NavMenuCssClass">
+            <div>
+                <ul>
+                    <li>
+                        <button @onclick="WipeButtonPressed">Wipe all data</button>
+                    </li>
+                    <li>
+                        <button @onclick="ChangeDescriptionButtonPressed">Change list description</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 }
 
 @code {
     public Record record;
     private List<Item> completedItems;
     private List<Item> uncompletedItems;
+
+    bool collapseMenu;
+    string NavMenuCssClass => collapseMenu ? "collapse" : null;
+
+    void ToggleMenu()
+    {
+        collapseMenu = !collapseMenu;
+    }
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -41,6 +66,7 @@ else
             record = await RecordsService.GetRecordByIdAsync(1002);
             completedItems = new List<Item>();
             uncompletedItems = new List<Item>();
+            collapseMenu = true;
             foreach (var item in record.Items)
             {
                 if (item.IsCompleted)
@@ -91,6 +117,11 @@ else
     //record = await RecordsService.GetRecordByIdAsync(9999);
         await OnInitializedAsync();
         StateHasChanged();
+    }
+
+    private void ChangeDescriptionButtonPressed()
+    {
+        NavManager.NavigateTo("/ChangeRecordDescription");
     }
 
 }

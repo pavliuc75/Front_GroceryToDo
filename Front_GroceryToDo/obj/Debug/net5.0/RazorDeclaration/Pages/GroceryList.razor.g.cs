@@ -105,11 +105,20 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 32 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+#line 48 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
        
     public Record record;
     private List<Item> completedItems;
     private List<Item> uncompletedItems;
+
+    bool collapseMenu;
+    string NavMenuCssClass => collapseMenu ? "collapse" : null;
+
+    void ToggleMenu()
+    {
+        collapseMenu = !collapseMenu;
+    }
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -118,6 +127,7 @@ using Front_GroceryToDo.Models;
             record = await RecordsService.GetRecordByIdAsync(1002);
             completedItems = new List<Item>();
             uncompletedItems = new List<Item>();
+            collapseMenu = true;
             foreach (var item in record.Items)
             {
                 if (item.IsCompleted)
@@ -168,6 +178,11 @@ using Front_GroceryToDo.Models;
     //record = await RecordsService.GetRecordByIdAsync(9999);
         await OnInitializedAsync();
         StateHasChanged();
+    }
+
+    private void ChangeDescriptionButtonPressed()
+    {
+        NavManager.NavigateTo("/ChangeRecordDescription");
     }
 
 

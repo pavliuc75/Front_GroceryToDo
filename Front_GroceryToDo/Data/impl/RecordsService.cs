@@ -40,6 +40,15 @@ namespace Front_GroceryToDo.Data.impl
             return message.IsSuccessStatusCode;
         }
 
+        public async Task<bool> UpdateRecordDescriptionAsync(string description)
+        {
+            int recordId = 1002;
+            HttpContent content = new StringContent("", Encoding.UTF8, "application/json");
+            HttpResponseMessage message =
+                await client.PatchAsync($"{uri}/Record?recordId={recordId}&description={description}", content);
+            return message.IsSuccessStatusCode;
+        }
+
         public async Task<bool> RemoveItemFromRecordAsync(int itemId)
         {
             int recordId = 1002;
