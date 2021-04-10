@@ -125,7 +125,7 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 46 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
+#line 71 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ListRendering.razor"
        
 
     [Parameter]

@@ -18,9 +18,11 @@ else
         <thead>
         <tr>
             <th></th>
-            <th>id</th>
-            <th>name</th>
-            <th>quantity</th>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Quantity</th>
+            <th>Weight</th>
+            <th>Units</th>
             <th></th>
         </tr>
         </thead>
@@ -31,11 +33,34 @@ else
                 <td>
                     <button @onclick="() => CompleteChange(item)">@ButtonName</button>
                 </td>
-                <td>@item.Id</td>
                 <td>@item.Name</td>
-                <td>@item.Quantity</td>
+                <td>@item.Details</td>
+                @if (item.Quantity != 0)
+                {
+                    <td>@item.Quantity</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.Weight != 0)
+                {
+                    <td>@item.Weight</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.Unit == null || item.Unit.Equals("none"))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@item.Unit</td>
+                }
                 <td>
-                    <button @onclick="() => MoreButtonClicked(item.Id)">More</button>
+                    <button @onclick="() => MoreButtonClicked(item.Id)" class="oi oi-menu"></button>
                 </td>
             </tr>
         }
