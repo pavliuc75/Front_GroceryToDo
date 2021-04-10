@@ -105,7 +105,7 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\AddItem.razor"
+#line 24 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\AddItem.razor"
        
 
     private string name;

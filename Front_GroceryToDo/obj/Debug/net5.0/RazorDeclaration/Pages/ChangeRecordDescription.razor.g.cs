@@ -98,7 +98,7 @@ using Front_GroceryToDo.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 10 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ChangeRecordDescription.razor"
+#line 15 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ChangeRecordDescription.razor"
        
     private string newDescription;
 

@@ -1,10 +1,15 @@
 ﻿@page "/Error"
 @inject NavigationManager NavManager
 
-<h3>Error</h3>
-<p>Sorry, an error occured.</p>
-<p>Press the button below to redirect to the main page.</p>
-<button @onclick="ToMainPage">To main page</button>
+<div class="card" style="background-color: #ffdadc">
+    <div class="card-body">
+        <h3>Error</h3>
+        <p>Sorry, an error occured.</p>
+        <p>Press the button below to redirect to the main page.</p>
+        <button @onclick="ToMainPage">To main page</button>
+    </div>
+</div>
+
 
 @code {
 

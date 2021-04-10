@@ -105,7 +105,7 @@ using Front_GroceryToDo.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 21 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ItemDetails.razor"
+#line 25 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ItemDetails.razor"
        
 
     [Parameter]

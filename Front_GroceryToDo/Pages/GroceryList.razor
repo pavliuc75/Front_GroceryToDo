@@ -6,55 +6,62 @@
 @inject ClipboardService ClipboardService
 @inject IUserService UserService
 
-@if (record == null)
-{
-    <p>
-        <em>Loading...</em>
-    </p>
-}
-else
-{
-    <p>
-        <b>
-            List Unique ID: <em>@record.Id </em>
-            <span>
-                <button @onclick="CopyToClipboard">Copy</button>
-            </span>
-        </b>
-    </p>
-    <p><a href="/">Switch list</a></p>
-    <hr/>
-    <p>Description: <em>@record.Description</em></p>
-    <hr/>
-    <em>Uncompleted</em>
-    <ListRendering Items="@uncompletedItems" ButtonName="Complete" GroceryListInstance="@this"></ListRendering>
-    <br>
-    <em>Completed</em>
-    <ListRendering Items="@completedItems" ButtonName="Incomplete" GroceryListInstance="@this"></ListRendering>
-    <hr/>
-    <button @onclick="Add">
-        Add
-    </button>
-    <br>
-    <br>
-    <div>
-        <button @onclick="ToggleMenu">
-            Settings
-        </button>
-        <div class="@NavMenuCssClass">
+<div class="card">
+    <div class="card-body">
+        @if (record == null)
+        {
+            <p>
+                <em>Loading...</em>
+            </p>
+        }
+        else
+        {
+            <p>
+                <b>
+                    List Unique ID: <em>@record.Id </em>
+                    <span>
+                        <button @onclick="CopyToClipboard">Copy</button>
+                    </span>
+                </b>
+            </p>
+            <p>
+                <a href="/">Switch list</a>
+            </p>
+            <hr/>
+            <p>Description: <em>@record.Description</em></p>
+            <hr/>
+            <em>Uncompleted</em>
+            <ListRendering Items="@uncompletedItems" ButtonName="Complete" GroceryListInstance="@this"></ListRendering>
+            <br>
+            <em>Completed</em>
+            <ListRendering Items="@completedItems" ButtonName="Incomplete" GroceryListInstance="@this"></ListRendering>
+            <hr/>
+            <button @onclick="Add">
+                Add
+            </button>
+            <br>
+            <br>
             <div>
-                <ul>
-                    <li>
-                        <button @onclick="WipeButtonPressed">Wipe all data</button>
-                    </li>
-                    <li>
-                        <button @onclick="ChangeDescriptionButtonPressed">Change list description</button>
-                    </li>
-                </ul>
+                <button @onclick="ToggleMenu">
+                    Settings
+                </button>
+                <div class="@NavMenuCssClass">
+                    <div>
+                        <ul>
+                            <li>
+                                <button @onclick="WipeButtonPressed">Wipe all data</button>
+                            </li>
+                            <li>
+                                <button @onclick="ChangeDescriptionButtonPressed">Change list description</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
-}
+
+</div>
 
 @code {
     public Record record;
@@ -146,4 +153,5 @@ else
             Console.WriteLine("Cannot write text to clipboard");
         }
     }
+
 }

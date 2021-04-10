@@ -3,9 +3,14 @@
 @inject NavigationManager NavManager
 @inject IRecordsService RecordsService
 
-<h3>Enter the new description for the record:</h3>
-<input @bind="newDescription">
-<button @onclick="ApplyButtonPressed">Apply changes</button>
+<div class="card">
+    <div class="card-body">
+        <h3>Enter the new description for the record:</h3>
+        <input @bind="newDescription">
+        <button @onclick="ApplyButtonPressed">Apply changes</button>
+    </div>
+</div>
+
 
 @code {
     private string newDescription;

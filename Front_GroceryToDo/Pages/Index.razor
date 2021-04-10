@@ -4,16 +4,20 @@
 @inject NavigationManager NavManager
 @inject IUserService UserService
 
-<p>
-    <b>Input list ID:</b>
-</p>
-<input type="number" @bind="id">
-<button @onclick="EnteredIdButtonClicked">Go to list</button>
-<em style="color: red">@errorMessage</em>
-<br>
-<br>
-Or, generate a new list:
-<button @onclick="GenerateButtonPressed">Generate a new list</button>
+<div class="card">
+    <div class="card-body">
+        <p>
+            <b>Input list ID:</b>
+        </p>
+        <input type="number" @bind="id">
+        <button @onclick="EnteredIdButtonClicked">Go to list</button>
+        <em style="color: red">@errorMessage</em>
+        <br>
+        <br>
+        Or, generate a new list:
+        <button @onclick="GenerateButtonPressed">Generate a new list</button>
+    </div>
+</div>
 
 @code{
 

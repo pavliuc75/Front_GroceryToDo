@@ -91,7 +91,7 @@ using Front_GroceryToDo.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\Error.razor"
+#line 14 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\Error.razor"
        
 
     private void ToMainPage()
