@@ -105,20 +105,35 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 66 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+#line 71 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
        
     public Record record;
     private List<Item> completedItems;
     private List<Item> uncompletedItems;
 
     bool collapseMenu;
+    bool collapseCompletedTable = true;
     string NavMenuCssClass => collapseMenu ? "collapse" : null;
+    string CompletedTableCssClass => collapseCompletedTable ? "collapse" : null;
+    string CompletedTableIcon = "oi oi-arrow-bottom";
 
-    void ToggleMenu()
+    void ToggleMenu1()
     {
         collapseMenu = !collapseMenu;
     }
 
+    void ToggleMenu2()
+    {
+        collapseCompletedTable = !collapseCompletedTable;
+        if (CompletedTableIcon.Equals("oi oi-arrow-bottom"))
+        {
+            CompletedTableIcon = "oi oi-arrow-top";
+        }
+        else
+        {
+            CompletedTableIcon = "oi oi-arrow-bottom";
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {

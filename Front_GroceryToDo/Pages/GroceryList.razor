@@ -34,7 +34,12 @@
             <ListRendering Items="@uncompletedItems" ButtonName="Complete" GroceryListInstance="@this"></ListRendering>
             <br>
             <em>Completed</em>
-            <ListRendering Items="@completedItems" ButtonName="Incomplete" GroceryListInstance="@this"></ListRendering>
+            <span>
+                <button class="@CompletedTableIcon" @onclick="ToggleMenu2"></button>
+            </span>
+            <div class="@CompletedTableCssClass">
+                <ListRendering Items="@completedItems" ButtonName="Incomplete" GroceryListInstance="@this"></ListRendering>
+            </div>
             <hr/>
             <button @onclick="Add">
                 Add
@@ -42,7 +47,7 @@
             <br>
             <br>
             <div>
-                <button @onclick="ToggleMenu">
+                <button @onclick="ToggleMenu1">
                     Settings
                 </button>
                 <div class="@NavMenuCssClass">
@@ -69,13 +74,28 @@
     private List<Item> uncompletedItems;
 
     bool collapseMenu;
+    bool collapseCompletedTable = true;
     string NavMenuCssClass => collapseMenu ? "collapse" : null;
+    string CompletedTableCssClass => collapseCompletedTable ? "collapse" : null;
+    string CompletedTableIcon = "oi oi-arrow-bottom";
 
-    void ToggleMenu()
+    void ToggleMenu1()
     {
         collapseMenu = !collapseMenu;
     }
 
+    void ToggleMenu2()
+    {
+        collapseCompletedTable = !collapseCompletedTable;
+        if (CompletedTableIcon.Equals("oi oi-arrow-bottom"))
+        {
+            CompletedTableIcon = "oi oi-arrow-top";
+        }
+        else
+        {
+            CompletedTableIcon = "oi oi-arrow-bottom";
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {
