@@ -98,7 +98,7 @@ using Front_GroceryToDo.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 16 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\Index.razor"
+#line 18 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\Index.razor"
       
 
     private int? id;

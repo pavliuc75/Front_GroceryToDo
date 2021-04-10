@@ -105,7 +105,7 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
+#line 59 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\GroceryList.razor"
        
     public Record record;
     private List<Item> completedItems;
@@ -196,7 +196,6 @@ using Front_GroceryToDo.Models;
             Console.WriteLine("Cannot write text to clipboard");
         }
     }
-
 
 #line default
 #line hidden

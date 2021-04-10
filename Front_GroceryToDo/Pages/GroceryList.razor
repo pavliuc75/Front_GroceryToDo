@@ -14,22 +14,31 @@
 }
 else
 {
-    <h3>List Unique ID: <em>@record.Id </em><button @onclick="CopyToClipboard">Copy</button></h3>
+    <p>
+        <b>
+            List Unique ID: <em>@record.Id </em>
+            <span>
+                <button @onclick="CopyToClipboard">Copy</button>
+            </span>
+        </b>
+    </p>
+    <p><a href="/">Switch list</a></p>
     <hr/>
-    <em>@record.Description</em>
+    <p>Description: <em>@record.Description</em></p>
     <hr/>
     <em>Uncompleted</em>
     <ListRendering Items="@uncompletedItems" ButtonName="Complete" GroceryListInstance="@this"></ListRendering>
     <br>
     <em>Completed</em>
     <ListRendering Items="@completedItems" ButtonName="Incomplete" GroceryListInstance="@this"></ListRendering>
-    <button class="btn btn-primary" @onclick="Add">
+    <hr/>
+    <button @onclick="Add">
         Add
     </button>
     <br>
     <br>
     <div>
-        <button class="btn btn-outline-secondary" @onclick="ToggleMenu">
+        <button @onclick="ToggleMenu">
             Settings
         </button>
         <div class="@NavMenuCssClass">
@@ -137,5 +146,4 @@ else
             Console.WriteLine("Cannot write text to clipboard");
         }
     }
-
 }

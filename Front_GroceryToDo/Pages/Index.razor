@@ -4,7 +4,9 @@
 @inject NavigationManager NavManager
 @inject IUserService UserService
 
-<h1>Input list ID:</h1>
+<p>
+    <b>Input list ID:</b>
+</p>
 <input type="number" @bind="id">
 <button @onclick="EnteredIdButtonClicked">Go to list</button>
 <em style="color: red">@errorMessage</em>

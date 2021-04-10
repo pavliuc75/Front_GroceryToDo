@@ -60,14 +60,12 @@ namespace Front_GroceryToDo.Data.impl
 
         public async Task<bool> RemoveItemFromRecordAsync(int itemId)
         {
-            int recordId = 1002;
             HttpResponseMessage message = await client.DeleteAsync($"{uri}/Record?itemId={itemId}&recordId={userService.GetCachedId()}");
             return message.IsSuccessStatusCode;
         }
 
         public async Task<bool> WipeRecordAsync()
         {
-            int recordId = 1002;
             HttpResponseMessage message = await client.DeleteAsync($"{uri}/Record/{userService.GetCachedId()}");
             return message.IsSuccessStatusCode;
         }
