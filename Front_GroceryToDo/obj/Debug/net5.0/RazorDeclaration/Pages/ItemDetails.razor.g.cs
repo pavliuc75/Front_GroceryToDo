@@ -105,7 +105,7 @@ using Front_GroceryToDo.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 25 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ItemDetails.razor"
+#line 65 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\ItemDetails.razor"
        
 
     [Parameter]
@@ -113,13 +113,24 @@ using Front_GroceryToDo.Data;
 
     private Item item;
     private Record record;
+    private string name;
+    private string details;
+    private int quantity;
+    private double weight;
+    private string unit;
+    private string errorMessage;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            record = await RecordsService.GetRecordByIdAsync(1002);
+            record = await RecordsService.GetRecordByIdAsync(UserService.GetCachedId());
             item = record.Items.FirstOrDefault(i => i.Id == this.Id);
+            name = item.Name;
+            details = item.Details;
+            quantity = item.Quantity;
+            weight = item.Weight;
+            unit = item.Unit;
         }
         catch (Exception e)
         {
@@ -150,10 +161,41 @@ using Front_GroceryToDo.Data;
         }
     }
 
+    private async Task ApplyChangesButtonPressed()
+    {
+        if (!String.IsNullOrEmpty(name))
+        {
+            item.Name = name;
+            if (!String.IsNullOrEmpty(details))
+            {
+                item.Details = details;
+            }
+            item.Quantity = quantity;
+            item.Weight = weight;
+            item.Unit = unit;
+            try
+            {
+                await RecordsService.UpdateItemInRecordAsync(item);
+                errorMessage = "";
+                NavManager.NavigateTo("GroceryList");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                NavManager.NavigateTo("/Error");
+            }
+        }
+        else
+        {
+            errorMessage = "The task should have a name!";
+        }
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserService UserService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRecordsService RecordsService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
     }

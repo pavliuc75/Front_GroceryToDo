@@ -3,6 +3,7 @@
 @using Front_GroceryToDo.Data
 @inject NavigationManager NavManager
 @inject IRecordsService RecordsService
+@inject IUserService UserService
 
 <div class="card">
     <div class="card-body">
@@ -14,7 +15,46 @@
         }
         else
         {
-            <h3>@item.Name</h3>
+            <p>
+                <b>Editing item <em>@name</em></b>
+            </p>
+            <hr>
+            <p>
+                <label>Name*</label>
+                <input @bind="name"/>
+            </p>
+            <p>
+                <label>Details</label>
+                <input @bind="details"/>
+            </p>
+            <p>
+                <label>Quantity</label>
+                <input type="number" @bind="quantity"/>
+            </p>
+            <p>
+                <label>Weight</label>
+                <input type="number" @bind="weight"/>
+            </p>
+            <p>
+                <label>Unit</label>
+                <select @bind="@unit">
+                    <option value="none">-</option>
+                    <option value="kg">kg</option>
+                    <option value="g">g</option>
+                    <option value="l">l</option>
+                    <option value="ml">ml</option>
+                </select>
+            </p>
+            <hr>
+            <em>* - required field</em>
+            <div>
+                <button @onclick="ApplyChangesButtonPressed">
+                    Apply changes
+                </button>
+            </div>
+            <p>
+                <em style="color: red">@errorMessage</em>
+            </p>
             <hr>
             <button @onclick="DeleteButtonPressed">Delete</button>
         }
@@ -29,13 +69,24 @@
 
     private Item item;
     private Record record;
+    private string name;
+    private string details;
+    private int quantity;
+    private double weight;
+    private string unit;
+    private string errorMessage;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            record = await RecordsService.GetRecordByIdAsync(1002);
+            record = await RecordsService.GetRecordByIdAsync(UserService.GetCachedId());
             item = record.Items.FirstOrDefault(i => i.Id == this.Id);
+            name = item.Name;
+            details = item.Details;
+            quantity = item.Quantity;
+            weight = item.Weight;
+            unit = item.Unit;
         }
         catch (Exception e)
         {
@@ -63,6 +114,36 @@
         {
             Console.WriteLine(e);
             NavManager.NavigateTo("/Error");
+        }
+    }
+
+    private async Task ApplyChangesButtonPressed()
+    {
+        if (!String.IsNullOrEmpty(name))
+        {
+            item.Name = name;
+            if (!String.IsNullOrEmpty(details))
+            {
+                item.Details = details;
+            }
+            item.Quantity = quantity;
+            item.Weight = weight;
+            item.Unit = unit;
+            try
+            {
+                await RecordsService.UpdateItemInRecordAsync(item);
+                errorMessage = "";
+                NavManager.NavigateTo("GroceryList");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                NavManager.NavigateTo("/Error");
+            }
+        }
+        else
+        {
+            errorMessage = "The task should have a name!";
         }
     }
 

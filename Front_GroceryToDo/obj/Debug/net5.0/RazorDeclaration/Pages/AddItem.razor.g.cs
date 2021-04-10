@@ -105,10 +105,14 @@ using Front_GroceryToDo.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\AddItem.razor"
+#line 51 "E:\Projects\GroceryAppBlazor\Front_GroceryToDo\Front_GroceryToDo\Pages\AddItem.razor"
        
 
     private string name;
+    private string details;
+    private int? quantity;
+    private double? weight;
+    private string unit = "none";
     private string errorMessage;
 
     private async Task Add()
@@ -117,15 +121,23 @@ using Front_GroceryToDo.Models;
         {
             Item item = new Item();
             item.Name = name;
-            bool isAddSuccess = await RecordsService.AddItemToRecordAsync(item);
-            if (isAddSuccess)
+            if (!String.IsNullOrEmpty(details))
             {
+                item.Details = details;
+            }
+            if (quantity != null) item.Quantity = (int) quantity;
+            if (weight != null) item.Weight = (double) weight;
+            item.Unit = unit;
+            try
+            {
+                await RecordsService.AddItemToRecordAsync(item);
                 errorMessage = "";
                 NavManager.NavigateTo("GroceryList");
             }
-            else
+            catch (Exception e)
             {
-                errorMessage = "An error occured.";
+                Console.WriteLine(e);
+                NavManager.NavigateTo("/Error");
             }
         }
         else

@@ -6,14 +6,41 @@
 
 <div class="card">
     <div class="card-body">
-        <h3>AddItem</h3>
+        <p><b>Add item</b></p>
         <hr/>
         <p>
+            <label>Name*</label>
             <input @bind="name"/>
         </p>
-        <button class="btn btn-primary" @onclick="Add">
-            Add
-        </button>
+        <p>
+            <label>Details</label>
+            <input @bind="details"/>
+        </p>
+        <p>
+            <label>Quantity</label>
+            <input type="number" @bind="quantity"/>
+        </p>
+        <p>
+            <label>Weight</label>
+            <input type="number" @bind="weight"/>
+        </p>
+        <p>
+            <label>Unit</label>
+            <select @bind="@unit">
+                <option selected value="none">-</option>
+                <option value="kg">kg</option>
+                <option value="g">g</option>
+                <option value="l">l</option>
+                <option value="ml">ml</option>
+            </select>
+        </p>
+        <hr>
+        <em>* - required field</em>
+        <div>
+            <button @onclick="Add">
+                Add
+            </button>
+        </div>
         <p>
             <em style="color: red">@errorMessage</em>
         </p>
@@ -24,6 +51,10 @@
 @code {
 
     private string name;
+    private string details;
+    private int? quantity;
+    private double? weight;
+    private string unit = "none";
     private string errorMessage;
 
     private async Task Add()
@@ -32,15 +63,23 @@
         {
             Item item = new Item();
             item.Name = name;
-            bool isAddSuccess = await RecordsService.AddItemToRecordAsync(item);
-            if (isAddSuccess)
+            if (!String.IsNullOrEmpty(details))
             {
+                item.Details = details;
+            }
+            if (quantity != null) item.Quantity = (int) quantity;
+            if (weight != null) item.Weight = (double) weight;
+            item.Unit = unit;
+            try
+            {
+                await RecordsService.AddItemToRecordAsync(item);
                 errorMessage = "";
                 NavManager.NavigateTo("GroceryList");
             }
-            else
+            catch (Exception e)
             {
-                errorMessage = "An error occured.";
+                Console.WriteLine(e);
+                NavManager.NavigateTo("/Error");
             }
         }
         else
